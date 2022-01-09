@@ -3,7 +3,7 @@ package todo
 import uuid "github.com/satori/go.uuid"
 
 
-type Item struct {
+type Todo struct {
 	Id 			uuid.UUID 	`json:"id"`
 	Text 		string 	`json:"text"`
 	Priority 	int 	`json:"priority"`
@@ -12,22 +12,22 @@ type Item struct {
 
 
 type Repo struct{
-	Items []Item
+	Todos []Todo `json:"todos"`
 }
 
 
 func New() *Repo {
 	return &Repo{
-		Items: []Item{},
+		Todos: []Todo{},
 	}
 }
 
 
-func (r *Repo) Add(item Item){
-	r.Items = append(r.Items, item)
+func (r *Repo) Add(todo Todo){
+	r.Todos = append(r.Todos, todo)
 }
 
 
-func (r *Repo) GetAll() []Item {
-	return r.Items
+func (r *Repo) GetAll() []Todo {
+	return r.Todos
 }

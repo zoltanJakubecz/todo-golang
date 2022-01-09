@@ -17,13 +17,13 @@ func TodoPost(todos *todo.Repo) gin.HandlerFunc {
 	return func(c *gin.Context){
 		requestBody := todoPostRequest{}
 		c.Bind(&requestBody)
-		item := todo.Item{
+		newTodo := todo.Todo{
 			Id: uuid.NewV4(),
 			Text: requestBody.Text,
 			Priority: requestBody.Priority,
 			Done: false,
 		}
-		todos.Add(item)
+		todos.Add(newTodo)
 
 		c.Status(http.StatusNoContent)
 

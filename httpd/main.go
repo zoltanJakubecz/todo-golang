@@ -2,14 +2,14 @@ package main
 
 import (
 	"go-todo-app/httpd/handler"
-	"go-todo-app/platform/todo"
+	"go-todo-app/service"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 
-	todos := todo.New()
+	todos := service.GetDataFromFile()
 
 	router := gin.Default()
 
