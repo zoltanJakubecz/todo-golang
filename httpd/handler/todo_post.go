@@ -2,6 +2,7 @@ package handler
 
 import (
 	"go-todo-app/platform/todo"
+	"go-todo-app/service"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -24,6 +25,8 @@ func TodoPost(todos *todo.Repo) gin.HandlerFunc {
 			Done: false,
 		}
 		todos.Add(newTodo)
+
+		service.WriteDataToFile(todos)
 
 		c.Status(http.StatusNoContent)
 

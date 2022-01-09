@@ -23,3 +23,8 @@ func GetDataFromFile() *todo.Repo {
 	fmt.Println(todos)
 	return todos
 }
+
+func WriteDataToFile(todos *todo.Repo){
+	file, _ := json.MarshalIndent(todos,"" ," ")
+	_ = ioutil.WriteFile("data/data.json", file, 0644)
+}
