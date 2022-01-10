@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"go-todo-app/platform/todo"
+	"os"
 
 	//	"encoding/json"
 	"io/ioutil"
@@ -18,13 +19,12 @@ func GetDataFromFile() *todo.Repo {
 
 	todos := todo.New()
 
-	fmt.Println("Data fie opened")
-	json.Unmarshal(data , todos)
-	fmt.Println(todos)
+	fmt.Println("Data file opened successful")
+	json.Unmarshal(data, todos)
 	return todos
 }
 
-func WriteDataToFile(todos *todo.Repo){
-	file, _ := json.MarshalIndent(todos,"" ," ")
-	_ = ioutil.WriteFile("data/data.json", file, 0644)
+func WriteDataToFile(todos *todo.Repo) {
+	file, _ := json.MarshalIndent(todos, "", " ")
+	os.WriteFile("./data/data.json", file, 0644)
 }
