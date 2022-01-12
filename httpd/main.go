@@ -16,6 +16,6 @@ func main() {
 	router.GET("/todos", handler.TodoGet(todos))
 	router.POST("/todos", handler.TodoPost(todos))
 
-	router.Run()
+	router.Run(":80")
 
 }
